@@ -46,11 +46,11 @@ def data_normalization(adult_,juvenile,population):
 	y_j = []
 	y_a = []
 	for idx in range(0,len(population)):
-		item = math.log(population[idx])
+		item = math.log10(population[idx])
 		y.append(item)
-		item = math.log(y_juvenile[idx]) + 3.1
+		item = math.log10(y_juvenile[idx])
 		y_j.append(item)
-		item = math.log(y_adult[idx])
+		item = math.log10(y_adult[idx])
 		y_a.append(item)
 
 	# population_normalized = preprocessing.normalize(y, norm='l1')[0]
@@ -62,12 +62,14 @@ def data_normalization(adult_,juvenile,population):
 def figure_generate(x,population_normalized,juvenile_normalized,adult_normalized):
 	plt.title('Juvernile Population Trend VS. Arrested Juvenile Trend')
 	plt.xlabel('Year')
-	plt.ylabel('Trend')
+	plt.ylabel('Log transformations')
 	plt.grid('on')
-	plt.plot(x,population_normalized,'ro',label = 'Juvenile Population Trend')
-	plt.plot(x,juvenile_normalized,'bo',label = 'Arrested Juvenile Trend')
-	plt.gca().axes.get_yaxis().set_visible(False)
-	plt.legend(loc='lower left')
+	plt.plot(x,population_normalized,'r--',label = 'Juvenile Population ')
+	plt.plot(x,adult_normalized,'g--',label = 'Arrested Adult ')
+	plt.plot(x,juvenile_normalized,'b--',label = 'Arrested Juvenile ')
+	
+	# plt.gca().axes.get_yaxis().set_visible(False)
+	plt.legend(loc='upper middle')
 	plt.show()
 
 all_path = 'ucr_export.asp'

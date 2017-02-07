@@ -57,25 +57,26 @@ def figure_generate(x,Violent_j,Property_j,Violent_a,Property_a):
 	plt.subplot(2,1,1)
 	plt.grid('on')
 	plt.title('Violent Crime counts VS Property Crime counts')
-	plt.plot(x,Violent_j,'r--',label = 'Juvenile Violent')
-	plt.plot(x,Violent_a,'b--',label = 'Adult Violent')
+	plt.plot(x,Violent_j,'r--',label = 'Juvenile Violence Crime')
+	plt.plot(x,Violent_a,'b--',label = 'Adult Violence Crime')
 	plt.xlabel('Year')
 	plt.ylabel('Counts')
 	plt.legend(loc='upper middle')
 	plt.subplot(2,1,2)
 	plt.grid('on')
-	plt.plot(x,Property_j,'r--',label = 'Juvenile Property')
-	plt.plot(x,Property_a,'b--',label = 'Adult Property')
+	plt.plot(x,Property_j,'r--',label = 'Juvenile Property Crime')
+	plt.plot(x,Property_a,'b--',label = 'Adult Property Crime')
 	plt.xlabel('Year')
 	plt.ylabel('Counts')
 	# plt.gca().axes.get_yaxis().set_visible(False)
 	plt.legend(loc='upper middle')
 	plt.show()
 
-path_a = 'ucr_export_adult.asp'
+path_a = 'data/adults_crime.asp'
 data_a =  data_preprocess(path_a)
 Violent_a,Property_a = data_normalization(data_a)
-path_j = 'ucr_export_juvenile.asp'
+path_j = 'data/juvenile_crime.asp'
 data_j = data_preprocess(path_j)
+population = data_j[35]
 Violent_j,Property_j = data_normalization(data_j)
 figure_generate(data_a[0],Violent_j,Property_j,Violent_a,Property_a)

@@ -60,7 +60,7 @@ def data_normalization(adult_,juvenile,population):
 	return y_a,y_j,y
 
 def figure_generate(x,population_normalized,juvenile_normalized,adult_normalized):
-	plt.title('Juvernile Population Trend VS. Arrested Juvenile Trend')
+	plt.title('Juvenile Population, Arrested Adults and Arrested Juvenile')
 	plt.xlabel('Year')
 	plt.ylabel('Log transformations')
 	plt.grid('on')
@@ -72,11 +72,11 @@ def figure_generate(x,population_normalized,juvenile_normalized,adult_normalized
 	plt.legend(loc='upper middle')
 	plt.show()
 
-all_path = 'ucr_export.asp'
+all_path = 'data/allAge_crime.asp'
 all_age = data_preprocess(all_path)
-adult_path = 'ucr_export_adult.asp'
+adult_path = 'data/adults_crime.asp'
 adult_ = data_preprocess(adult_path)
-juvenile_path = 'ucr_export_juvenile.asp'
+juvenile_path = 'data/juvenile_crime.asp'
 juvenile = data_preprocess(juvenile_path)
 population = [68640942,69473151,70233520,70920754,71431424,71946064,72376189,72671175,72936457,73100758,73297735,73523669,73757714,74019405,74104602,74134167,74123035,73917090,73710072]
 a_norm,j_norm,p_norm = data_normalization(adult_,juvenile,population)
